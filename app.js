@@ -1,5 +1,6 @@
 require('dotenv').config();
 require('express-async-errors');
+const helmet = require('helmet')
 
 const express = require('express');
 const app = express();
@@ -11,6 +12,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 // middleware
 app.use(express.static('./public'));
 app.use(express.json());
+app.use(helmet())
 
 app.use('/api/v1',route)
 
